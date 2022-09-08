@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\Contracts\" />
+    <ProjectReference Include="..\CondoApp.Models\CondoApp.Models.csproj" />
   </ItemGroup>
 
 </Project>

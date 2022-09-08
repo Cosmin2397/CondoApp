@@ -27,6 +27,6 @@ namespace CondoApp.Models.Dtos
 
         public int NumOfFloors { get; set; }
 
-        public IEnumerable<Flats> Flats { get; set; } = Enumerable.Empty<Flats>();
+        public IEnumerable<Flats> FlatsOfBuilding { get; set; } = Enumerable.Empty<Flats>();
     }
 }

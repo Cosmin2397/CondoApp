@@ -1,0 +1,35 @@
+﻿@page "/buildings"
+@inherits BuildingsBase
+
+<PageTitle>Buildings
+</PageTitle>
+<h3>Buildings</h3>
+
+        @if(Buildings == null)
+{
+    <div>No buildings</div>
+}
+else
+{
+@foreach(var building in Buildings)
+        {
+            <div class="col-md-3 mb-2">
+            <a href="/BuildingDetails/@building.Id">
+                <div class="card">
+                <img class="img-thumbnail" src="@building.PictureURL" >
+                <div class="card-body">
+                    <h5 class="card-title mb-3">
+                        @building.Name
+                    </h5>
+                    <p class ="card-text">
+                        City: @building.Country, @building.City
+                    </p>
+                    <p class ="card-text">
+                        Address: @building.Address
+                    </p>
+                    </div>
+                </div>
+            </a>
+            </div>
+        }
+}

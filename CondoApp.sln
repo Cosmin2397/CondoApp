@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CondoApp.Web", "CondoApp.We
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CondoApp.Api", "CondoApp.Api\CondoApp.Api.csproj", "{C54C60AC-A0B5-4C82-8C23-11BA0007505D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CondoApp.Models", "CondoApp.Models\CondoApp.Models.csproj", "{E19C185F-68A5-483E-86B4-A589E1D54BC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CondoApp.Models", "CondoApp.Models\CondoApp.Models.csproj", "{E19C185F-68A5-483E-86B4-A589E1D54BC7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

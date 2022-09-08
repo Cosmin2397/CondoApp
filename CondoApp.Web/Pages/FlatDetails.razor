@@ -1,0 +1,56 @@
+﻿@page "/FlatDetails/{Id:int}"
+@inherits FlatDetailsBase
+
+@if (FlatDto == null)
+{
+    <DisplaySpinner/>
+}
+else
+{
+    <h3 class="mb-5">Flat Details</h3>
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <img class="img-fluid" src ="@FlatDto.PictureURL">
+            <div class="col-md-6">
+                <h3>@FlatDto.Name</h3>
+                <p class="mb-4">Description: @FlatDto.Description</p>
+                <p class="mb-4">Flat Num: @FlatDto.FlatNum</p>
+                <p class="mb-4">Surface: @FlatDto.Surface</p>
+                <p class="mb-4">Rooms: @FlatDto.NumOfRooms</p>
+                <p class="mb-4">Floor: @FlatDto.Floor</p>
+                <p class="mb-4">Renting Price: @FlatDto.RentingPrice.ToString("c")</p>
+                <p class="mb-4">Is Rented? : @FlatDto.IsRented</p>
+                <p class="mb-4">Building Name : @FlatDto.BuildingName</p>
+                <p class="mb-4">Adress : @FlatDto.BuildingAddress, @FlatDto.BuildingCity</p>
+            </div>
+        </div>
+    </div>
+}
+<hr />
+<h3 style="align-content:center">List of Flats</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th> Name </th>
+            <th> Description </th>
+            <th> Cost </th>
+            <th> Date </th>
+            <th> Expense Type</th>
+            <th> Options </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var expense in FlatDto.Expenses)
+        {
+            <tr>
+                <td>@expense.Name</td>
+                <td>@expense.Description</td>
+                <td>@expense.Cost.ToString("c")</td>
+                <td>@expense.Date</td>
+                <td>@expense.ExpenseType.ToString()</td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>
