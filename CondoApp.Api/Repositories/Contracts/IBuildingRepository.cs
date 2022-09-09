@@ -10,5 +10,11 @@ namespace CondoApp.Api.Repositories.Contracts
 
         Task<Building> GetBuildingById(int id);
 
+        Task<Building> AddBuilding(Building building);
+
+        Task<Building> UpdateBuilding(int id, Building newBuilding);
+
+        Task<Building> DeleteBuilding(int id);
+
     }
 }

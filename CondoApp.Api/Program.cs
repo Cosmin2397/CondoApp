@@ -19,6 +19,7 @@ builder.Services.AddDbContextPool<AppDbContext>(options =>
 
 builder.Services.AddScoped<IBuildingRepository, BuildingRepository>();
 builder.Services.AddScoped<IFlatRepository, FlatRepository>();
+builder.Services.AddScoped<IExpenseRepository, ExpenseRepository>();
 
 var app = builder.Build();
 

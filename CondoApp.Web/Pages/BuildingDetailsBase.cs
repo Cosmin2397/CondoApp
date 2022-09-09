@@ -18,7 +18,7 @@ namespace CondoApp.Web.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            Building = await BuildingService.GetBuildingById(Id);
+            Building = await BuildingService.GetBuildingDtoById(Id);
         }
     }
 }

@@ -7,6 +7,14 @@ namespace CondoApp.Web.Services.Contracts
     {
         Task<IEnumerable<Building>> GetBuildings();
 
-        Task<BuildingDto> GetBuildingById(int id);
+        Task<BuildingDto> GetBuildingDtoById(int id);
+
+        Task<Building> GetBuildingById(int id);
+
+        Task<Building> AddBuilding(Building newBuilding);
+
+        Task UpdateBuilding(Building building);
+
+        Task DeleteBuilding(int id);
     }
 }

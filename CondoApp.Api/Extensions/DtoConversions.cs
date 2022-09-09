@@ -1,5 +1,6 @@
 ﻿using CondoApp.Api.Entities;
 using CondoApp.Models.Dtos;
+using System.Linq;
 
 namespace CondoApp.Api.Extensions
 {
@@ -43,6 +44,24 @@ namespace CondoApp.Api.Extensions
                 Expenses = expenses
 
             };
+        }
+
+        public static IEnumerable<ExpenseDto> ConvertExpensesToDto(this IEnumerable<Expense> expenses, IEnumerable<Flats> flats)
+        {
+            return (from expense in expenses
+                    join flat in flats
+                    on expense.FlatId equals flat.Id
+                    select new ExpenseDto
+            {
+                Id = expense.Id,
+                Date = expense.Date,
+                ExpenseType = expense.ExpenseType,
+                Name = expense.Name,
+                Description= expense.Description,
+                Cost = expense.Cost,
+                FlatId = expense.FlatId,
+                FlatName = flat.Name
+            }).ToList();
         }
     }
           
