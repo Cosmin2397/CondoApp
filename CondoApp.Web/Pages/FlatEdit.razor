@@ -1,0 +1,67 @@
+﻿@page "/EditFlat"
+@page "/EditFlat/{Id}"
+@inherits FlatEditBase
+
+<div class="row">
+    <div class="col-md-12">
+        <h1>Details for @NewFlat.Name</h1>
+    </div>
+    <DataAnnotationsValidator />
+    <ValidationSummary></ValidationSummary>
+    <br />
+
+    <EditForm Model="@NewFlat" OnValidSubmit="@HandleValidRequest" OnInvalidSubmit="HandleInvalidRequest">
+        <div class="form-group">
+            <label class="col-md-3">Name</label>
+            <InputText class="col-md-8" @bind-Value="@NewFlat.Name" id="Name"></InputText>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3">Description</label>
+            <InputTextArea class="offset-md-1 col-md-8" @bind-Value="@NewFlat.Description" id="Description"></InputTextArea>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3">Photo Url</label>
+            <InputTextArea class="offset-md-1 col-md-8" @bind-Value="@NewFlat.PictureURL" id="PhotoURL"></InputTextArea>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3">Flat Number</label>
+            <InputNumber class="offset-md-1 col-md-8" @bind-Value="@NewFlat.FlatNum" id="FlatNum"></InputNumber>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3">Surface</label>
+            <InputNumber class="offset-md-1 col-md-8" @bind-Value="@NewFlat.Surface" id="Surface"></InputNumber>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3">Number of Rooms</label>
+            <InputNumber class="offset-md-1 col-md-8" @bind-Value="@NewFlat.NumOfRooms" id="NumOfRooms"></InputNumber>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3">Floor</label>
+            <InputNumber class="offset-md-1 col-md-8" @bind-Value="@NewFlat.Floor" id="Floor"></InputNumber>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3">Renting Price</label>
+            <InputNumber class="offset-md-1 col-md-8" @bind-Value="@NewFlat.RentingPrice" id="RentingPrice"></InputNumber>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3">Building ID</label>
+            <InputNumber class="offset-md-1 col-md-8" @bind-Value="@NewFlat.BuildingID" id="BuildingID"></InputNumber>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3">Is Rented?</label>
+            <InputCheckbox class="offset-md-1 col-md-8" @bind-Value="@NewFlat.IsRented" id="IsRented"></InputCheckbox>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-warning">Save Flat</button>
+            <a @onclick="@GoToOverview" class="btn btn-primary">Back</a>
+            @if(!String.IsNullOrEmpty(Id))
+            {
+                <a @onclick="@DeleteFlat" class="btn btn-danger">Delete Flat</a>
+            }
+        </div>
+
+        <label>@Message</label>
+    </EditForm>
+
+    
+</div>

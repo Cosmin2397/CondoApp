@@ -18,7 +18,7 @@ namespace CondoApp.Web.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            FlatDto = await FlatService.GetFlatById(Id);
+            FlatDto = await FlatService.GetFlatDtoById(Id);
         }
     }
 }

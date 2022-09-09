@@ -36,5 +36,54 @@ namespace CondoApp.Api.Repositories.Contracts
             var flats = await this.context.Flats.ToListAsync();
             return flats;
         }
+
+        public async Task<Flats> AddFlat(Flats newFlat)
+        {
+            if (newFlat == null)
+            {
+                return null;
+            }
+            else
+            {
+                await this.context.AddAsync(newFlat);
+                await this.context.SaveChangesAsync();
+                return newFlat;
+            }
+        }
+
+        public async Task<Flats> DeleteFlat(int id)
+        {
+            var flat = await this.context.Flats.FindAsync(id);
+            if (flat != null)
+            {
+                this.context.Flats.Remove(flat);
+                await this.context.SaveChangesAsync();
+            }
+            return flat;
+        }
+
+        public async Task<Flats> UpdateFlat(int id, Flats newFlat)
+        {
+            var flat = await this.context.Flats.FindAsync(id);
+
+            if (flat != null)
+            {
+                flat.Name = newFlat.Name;
+                flat.Description = newFlat.Description;
+                flat.PictureURL = newFlat.PictureURL;
+                flat.FlatNum = newFlat.FlatNum;
+                flat.Surface = newFlat.Surface;
+                flat.NumOfRooms = newFlat.NumOfRooms;
+                flat.Floor = newFlat.Floor;
+                flat.RentingPrice = newFlat.RentingPrice;
+                flat.IsRented = newFlat.IsRented;
+                flat.BuildingID = newFlat.BuildingID;
+
+                await this.context.SaveChangesAsync();
+                return flat;
+            }
+
+            return null;
+        }
     }
 }

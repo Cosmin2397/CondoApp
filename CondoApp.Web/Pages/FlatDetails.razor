@@ -22,12 +22,13 @@ else
                 <p class="mb-4">Is Rented? : @FlatDto.IsRented</p>
                 <p class="mb-4">Building Name : @FlatDto.BuildingName</p>
                 <p class="mb-4">Adress : @FlatDto.BuildingAddress, @FlatDto.BuildingCity</p>
+                <a href="@($"EditFlat/{FlatDto.Id}")" class="btn btn-warning">Edit</a>
             </div>
         </div>
     </div>
 }
 <hr />
-<h3 style="align-content:center">List of Flats</h3>
+<h3 style="align-content:center">List of Expenses</h3>
 
 <table class="table">
     <thead>

@@ -7,6 +7,14 @@ namespace CondoApp.Web.Services.Contracts
     {
         Task<IEnumerable<Flats>> GetFlats();
 
-        Task<FlatDto> GetFlatById(int id);
+        Task<FlatDto> GetFlatDtoById(int id);
+
+        Task<Flats> GetFlatById(int id);
+
+        Task<Flats> AddFlat(Flats newFlat);
+
+        Task UpdateFlat(Flats flat);
+
+        Task DeleteFlat(int id);
     }
 }

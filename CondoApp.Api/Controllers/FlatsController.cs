@@ -42,8 +42,8 @@ namespace CondoApp.Api.Controllers
             }
         }
 
-        [HttpGet("{id:int}")]
-        public async Task<ActionResult<FlatDto>> GetFlatById(int id)
+        [HttpGet("Dto/{id:int}")]
+        public async Task<ActionResult<FlatDto>> GetFlatDtoById(int id)
         {
             try
             {
@@ -71,6 +71,83 @@ namespace CondoApp.Api.Controllers
                                 "Error retrieving data from the database");
 
             }
+        }
+
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<Flats>> GetFlatById(int id)
+        {
+            try
+            {
+                var flat = await this.flatRepository.GetFlatById(id);
+
+                if (flat == null)
+                {
+                    return BadRequest();
+                }
+                else
+                {
+                    return Ok(flat);
+                }
+
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                                "Error retrieving data from the database");
+
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Flats>> AddFlats(Flats flat)
+        {
+            return Ok(flatRepository.AddFlat(flat));
+        }
+
+
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult<Flats>> UpdateBuilding(int id, Flats newFlat)
+        {
+            try
+            {
+                var flat = await this.flatRepository.UpdateFlat(id, newFlat);
+                if (flat == null)
+                {
+                    return NotFound();
+                }
+
+                var flatUpdated = await flatRepository.GetFlatById(flat.Id);
+
+
+                return Ok(flatUpdated);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+
+        }
+
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult> DeleteFlat(int id)
+        {
+            try
+            {
+                var flat = await this.flatRepository.DeleteFlat(id);
+                if (flat == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+
         }
     }
 }
