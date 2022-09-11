@@ -3,38 +3,53 @@
 
 <PageTitle>Expenses
 </PageTitle>
-<h3>Expenses</h3>
-@if(Expenses == null)
-{
-    <div>No expenses</div>
-}
-else
-{
-    <table class="table">
-    <thead>
-        <tr>
-            <th> Name </th>
-            <th> Description </th>
-            <th> Cost </th>
-            <th> Date </th>
-            <th> Expense Type</th>
-            <th> Flat Name</th>
-            <th> Options </th>
+<h3 style="text-align:center">List of expenses</h3>
+<div class="container mt-5 px-2">
+    <div class="table-responsive">
+    <table class="table table-responsive table-hover caption-top">
+      <thead>
+        <tr class="bg-dark" style="color:white">
+          <th scope="col" width="5%">Id</th>
+          <th scope="col" width="10%">Name</th>
+          <th scope="col" width="20%">Description</th>
+          <th scope="col" width="15%">Flat Id/Name</th>
+          <th scope="col" width="20%">Date</th>
+          <th scope="col" width="10%">Type</th>
+          <th scope="col" class="text-end" width="10%"><span>Cost</span></th>
+          <th scope="col" class="text-end" width="10%"><span>Options</span></th>
         </tr>
-    </thead>
-    <tbody>
-        @foreach(var expense in Expenses)
-        {
-            <tr>
-                <td>@expense.Name</td>
-                <td>@expense.Description</td>
-                <td>@expense.Cost.ToString("c")</td>
-                <td>@expense.Date</td>
-                <td>@expense.ExpenseType.ToString()</td>
-                <td>@expense.FlatName</td>
-                <td></td>
-            </tr>
-        }
-    </tbody>
+      </thead>
+  <tbody>
+      @foreach(var item in Expenses)
+      {
+    <tr class="bg-light">
+      <td>@item.Id</td>
+      <td>@item.Name</td>
+      <td>@item.Description</td>
+      <td>@item.FlatId. @item.FlatName</td>
+      <td>@item.Date</td>
+      <td>@item.ExpenseType.ToString()</td>
+      <td class="text-end"><span class="fw-bolder">@item.Cost.ToString("c")</span></td>
+      <td class="text-end"> 
+          <a href="@($"EditExpense/{item.Id}")" class="btn btn-warning">Edit</a>
+      </td>
+    </tr>
+    }
+    <tr>
+      <td class="text-end"><span class="fw-bolder">Total:@TotalCost.ToString("c")</span></td>
+    </tr>
+  </tbody>
 </table>
-}
+  
+  </div>
+    
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <a href="/EditExpense" class="btn btn-success">
+            Create Expense
+        </a>
+    </div>
+</div>
+

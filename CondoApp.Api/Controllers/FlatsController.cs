@@ -106,7 +106,7 @@ namespace CondoApp.Api.Controllers
 
 
         [HttpPut("{id:int}")]
-        public async Task<ActionResult<Flats>> UpdateBuilding(int id, Flats newFlat)
+        public async Task<ActionResult<Flats>> UpdateFlat(int id, Flats newFlat)
         {
             try
             {

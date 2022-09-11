@@ -8,5 +8,13 @@ namespace CondoApp.Web.Services.Contracts
         Task<IEnumerable<ExpenseDto>> GetExpenses();
 
         Task<Expense> GetExpenseById(int id);
+
+        Task<Expense> AddExpense(Expense newExpense);
+
+        Task UpdateExpense(Expense expense);
+
+        Task DeleteExpense(int id);
+
+        Task<double> TotalCost();
     }
 }

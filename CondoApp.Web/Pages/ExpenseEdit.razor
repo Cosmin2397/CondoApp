@@ -1,0 +1,70 @@
+﻿@page "/EditExpense"
+@page "/EditExpense/{Id}"
+@using CondoApp.Api.Data.Enums
+@inherits ExpenseEditBase
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+    <h5 style="text-align:center">Create new Expense</h5>
+    </div>
+    <DataAnnotationsValidator />
+    <ValidationSummary></ValidationSummary>
+    <div class="form-group row" style="padding-top:10px;">
+            <div class="col-md-8 offset-2"> 
+    <EditForm Model="@NewExpense" OnValidSubmit="@HandleValidRequest" OnInvalidSubmit="HandleInvalidRequest">
+        <div class="form-group row" style="padding-top:10px;">
+            <label class="col-md-2 col-form-label">Name</label>
+            <div class="col-md-10">
+            <InputText class="form-control" @bind-Value="@NewExpense.Name" id="Name"></InputText>
+            </div>
+        </div>
+        <div class="form-group row" style="padding-top:10px;">
+            <label class="col-md-2 col-form-label">Description</label>
+            <div class="col-md-10">
+            <InputTextArea class="form-control" @bind-Value="@NewExpense.Description" id="Description"></InputTextArea>
+            </div>
+        </div>
+        <div class="form-group row" style="padding-top:10px;">
+            <label class="col-md-2 col-form-label">Expense Type</label>
+            <div class="col-md-10">
+            <InputSelect class="form-control" @bind-Value="@NewExpense.ExpenseType" id="ExpenseType">
+                @foreach (var expense in Enum.GetValues(typeof(ExpensesType)))
+                {
+            
+                <option value="@expense">@expense</option>
+                }
+            </InputSelect>
+            </div>
+        </div>
+        <div class="form-group row" style="padding-top:10px;">
+            <label class="col-md-2 col-form-label">Date/Time</label>
+            <div class="col-md-10">
+            <InputDate class="form-control" @bind-Value="@NewExpense.Date" id="Date"></InputDate>
+            </div>
+        </div>
+        <div class="form-group row" style="padding-top:10px;">
+            <label class="col-md-2 col-form-label">Cost</label>
+            <div class="col-md-10">
+            <InputNumber class="form-control" @bind-Value="@NewExpense.Cost" id="Cost"></InputNumber>
+            </div>
+        </div>
+        <div class="form-group row" style="padding-top:10px;">
+            <label class="col-md-2 col-form-label">Flat ID</label>
+            <div class="col-md-10">
+            <InputNumber class="form-control" @bind-Value="@NewExpense.FlatId" id="FlatID"></InputNumber>
+            </div>
+        </div>
+        <div class="form-group" style="padding-top:10px;">
+            <button type="submit" class="btn btn-warning">Save Expense</button>
+            <a @onclick="@GoToOverview" class="btn btn-primary">Back</a>
+            @if(!String.IsNullOrEmpty(Id))
+            {
+                <a @onclick="@DeleteExpenses" class="btn btn-danger">Delete Expense</a>
+            }
+        </div>
+
+        <label>@Message</label>
+    </EditForm>
+    </div>
+    </div>
+    </div>

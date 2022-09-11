@@ -1,11 +1,10 @@
 ﻿using CondoApp.Api.Entities;
-using CondoApp.Models.Dtos;
 using CondoApp.Web.Services.Contracts;
 using Microsoft.AspNetCore.Components;
 
 namespace CondoApp.Web.Pages
 {
-    public class BuildingEditBase : ComponentBase
+    public class ExpenseEditBase : ComponentBase
     {
         protected string Message = string.Empty;
         protected bool Saved;
@@ -14,14 +13,12 @@ namespace CondoApp.Web.Pages
         public NavigationManager navigationManager { get; set; }
 
         [Inject]
-        public IBuildingService BuildingService { get; set; }
+        public IExpenseService ExpenseService { get; set; }
 
         [Parameter]
         public string Id { get; set; }
 
-        public Building NewBuilding { get; set; } = new Building();
-
-        public BuildingDto NewBuildingDto { get; set; } = new BuildingDto();
+        public Expense NewExpense { get; set; } = new Expense();
 
         protected async override Task OnInitializedAsync()
         {
@@ -29,9 +26,8 @@ namespace CondoApp.Web.Pages
 
             if (!String.IsNullOrEmpty(Id))
             {
-                var buildingId = Convert.ToInt32(Id);
-                NewBuilding = await BuildingService.GetBuildingById(buildingId);
-                NewBuildingDto = await BuildingService.GetBuildingDtoById(buildingId);
+                var expenseId = Convert.ToInt32(Id);
+                NewExpense = await ExpenseService.GetExpenseById(expenseId);
             }
 
         }
@@ -40,12 +36,12 @@ namespace CondoApp.Web.Pages
         {
             if (String.IsNullOrEmpty(Id))
             {
-                var res = await BuildingService.AddBuilding(NewBuilding);
+                var res = await ExpenseService.AddExpense(NewExpense);
 
                 if (res != null)
                 {
                     Saved = true;
-                    Message = "Building has been added";
+                    Message = "Expense has been added";
                 }
                 else
                 {
@@ -54,9 +50,9 @@ namespace CondoApp.Web.Pages
             }
             else
             {
-                await BuildingService.UpdateBuilding(NewBuilding);
+                await ExpenseService.UpdateExpense(NewExpense);
                 Saved = true;
-                Message = "Building has been updated";
+                Message = "Expense has been updated";
             }
         }
 
@@ -67,17 +63,17 @@ namespace CondoApp.Web.Pages
 
         protected void GoToOverview()
         {
-            navigationManager.NavigateTo("/Buildings");
+            navigationManager.NavigateTo("/Expenses");
         }
 
-        protected async Task DeleteBuilding()
+        protected async Task DeleteExpenses()
         {
             if (!String.IsNullOrEmpty(Id))
             {
-                var buildingId = Convert.ToInt32(Id);
-                await BuildingService.DeleteBuilding(buildingId);
+                var expenseId = Convert.ToInt32(Id);
+                await ExpenseService.DeleteExpense(expenseId);
 
-                navigationManager.NavigateTo("/Buildings");
+                navigationManager.NavigateTo("/Expenses");
             }
 
             Message = "Something went wrong, unable to delete";

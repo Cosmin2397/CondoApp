@@ -71,5 +71,57 @@ namespace CondoApp.Api.Controllers
 
             }
         }
+
+        [HttpPost]
+        public async Task<ActionResult<Expense>> AddExpense(Expense expense)
+        {
+            return Ok(expenseRepository.AddExpense(expense));
+        }
+
+
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult<Expense>> UpdateExpense(int id, Expense newExpense)
+        {
+            try
+            {
+                var expense = await this.expenseRepository.UpdateExpense(id, newExpense);
+                if (expense == null)
+                {
+                    return NotFound();
+                }
+
+                var expenseUpdated = await expenseRepository.GetExpenseById(expense.Id);
+
+
+                return Ok(expenseUpdated);
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+
+        }
+
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult> DeleteExpense(int id)
+        {
+            try
+            {
+                var expense = await this.expenseRepository.DeleteExpense(id);
+                if (expense == null)
+                {
+                    return NotFound();
+                }
+
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+
+        }
     }
 }

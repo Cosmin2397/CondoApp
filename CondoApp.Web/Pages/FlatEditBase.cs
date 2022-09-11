@@ -1,4 +1,5 @@
 ﻿using CondoApp.Api.Entities;
+using CondoApp.Models.Dtos;
 using CondoApp.Web.Services.Contracts;
 using Microsoft.AspNetCore.Components;
 
@@ -20,6 +21,10 @@ namespace CondoApp.Web.Pages
 
         public Flats NewFlat { get; set; } = new Flats();
 
+        public FlatDto NewFlatDto { get; set; } = new FlatDto();
+
+        public double TotalCost { get; set; } = 0;
+
         protected async override Task OnInitializedAsync()
         {
             Saved = false;
@@ -28,6 +33,8 @@ namespace CondoApp.Web.Pages
             {
                 var flatId = Convert.ToInt32(Id);
                 NewFlat = await FlatService.GetFlatById(flatId);
+                NewFlatDto = await FlatService.GetFlatDtoById(flatId);
+                TotalCost = await FlatService.TotalCostByFlat(flatId);
             }
 
         }

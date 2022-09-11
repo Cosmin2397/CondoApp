@@ -10,5 +10,11 @@ namespace CondoApp.Api.Repositories.Contracts
         Task<Flats> GetFlatFromExpense(int flatID);
 
         Task<Expense> GetExpenseById(int id);
+
+        Task<Expense> AddExpense(Expense expense);
+
+        Task<Expense> UpdateExpense(int id, Expense newExpense);
+
+        Task<Expense> DeleteExpense(int id);
     }
 }

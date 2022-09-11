@@ -3,39 +3,59 @@
 
 <PageTitle>Flats
 </PageTitle>
-<h3>Flats</h3>
+<h3 style="text-align:center">List of Flats</h3>
 @if(FlatsList == null)
 {
     <div>No flats</div>
 }
 else
 {
-    @foreach(var flat in FlatsList)
+    <div class="row">
+    @foreach (var item in FlatsList)
     {
-        <div class="col-md-3 mb-2">
-        <a href="/FlatDetails/@flat.Id">
-            <div class="card">
-                <img class="img-thumbnail" src="@flat.PictureURL" >
-                <div class="card-body">
-                    <h5 class="card-title mb-3">
-                        Name: @flat.Name
-                    </h5>
-                    <p class ="card-text">
-                        <b>Renting Price:@flat.RentingPrice.ToString("C")</b>
-                    </p>
-                    @if (flat.IsRented)
-                    {
-                        <p class="card-text">Is Rented?: Yes</p>
-                    }
-                    else
-                    {
-                        <p class="card-text">Is Rented?:No</p>
-                    }
+        <div class="col-md-4 col-xs-6 border-primary mb-3">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <img class ="card-img-top" src="@item.PictureURL" style="height:200px" alt="@item.Name">
+                        <div class="card-header text-black" style="text-align:center">
+                            <p class="card-text">
+                                <h5 class="card-title">@item.Name</h5>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="card-body">
+                            <p class="card-text"><b>Id: </b>@item.Id</p>
+                            <p class="card-text"><b>Surface: </b>@item.Surface mp</p>
+                            <p class="card-text"><b>Flat Number: </b>@item.FlatNum</p>
+                            <p class="card-text ">
+                                <b>Status: </b>
+                                @if (@item.IsRented)
+                                {
+                                    <span class="badge bg-danger text-white">Rented</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-success text-white">Available</span>
+                                }
+                                </p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-footer ">
+                            <div class="btn-group d-flex" role="group">
+                                <a href="@($"FlatDetails/{item.Id}")" class="btn btn-primary">Show Details</a>
+                               <a href="@($"EditFlat/{item.Id}")" class="btn btn-warning">Edit</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </a>
         </div>
-        }
+    }
+</div>
 }
 <div class="row">
     <div class="col-md-12">

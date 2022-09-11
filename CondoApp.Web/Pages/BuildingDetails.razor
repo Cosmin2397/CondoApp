@@ -1,56 +1,80 @@
-﻿@page "/BuildingDetails/{Id:int}"
-@inherits BuildingDetailsBase
+﻿@page "/BuildingDetails/{Id}"
+@inherits BuildingEditBase
 
-@if (Building == null)
-{
-    <DisplaySpinner/>
-}
-else
-{
-    <h3 class="mb-5">Building Details</h3>
-    <div class="row">
-        <div class="col-md-6 mb-4">
-            <img class="img-fluid" src ="@Building.PictureURL">
-            <div class="col-md-6">
-                <h3>@Building.Name</h3>
-                <p class="mb-4">Description: @Building.Description</p>
-                <p class="mb-4">City: @Building.Country, @Building.City</p>
-                <p class="mb-4">Address: @Building.Address</p>
-                <p class="mb-4">Floors: @Building.NumOfFloors</p>
-                <p class="mb-4">Flats: @Building.NumOfFlats</p>
-                <a href="@($"EditBuilding/{Building.Id}")" class="btn btn-warning">Edit</a>
+<div class = "main-wrapper">
+        <div class = "container">
+            <div class = "product-div">
+                <div class = "product-div-left">
+                        <img class="prd-img" src = "@NewBuilding.PictureURL" alt = "@NewBuilding.Name">
+                </div>
+                <div class = "product-div-right">
+                    <span class = "product-name">@NewBuilding.Name</span>
+                    <span class = "product-price">City: @NewBuilding.City, @NewBuilding.Country</span>
+                    <span class = "product-price">Address: @NewBuilding.Address</span>
+                    <span class = "product-price">Floors: @NewBuilding.NumOfFloors</span>
+                    <span class = "product-price">Flats: @NewBuilding.NumOfFlats</span>
+                    <p class = "product-description">Description: @NewBuilding.Description</p>
+                    <div>
+                        <a @onclick="@GoToOverview" class="btn btn-primary" style="padding: 7px;">Back</a>
+                        <a href="@($"EditBuilding/{NewBuilding.Id}")" class="btn btn-warning" style="padding: 7px;">Edit</a>
+                        <a @onclick="@DeleteBuilding" class="btn btn-danger" style="padding: 7px;">Delete Building</a>
+                </div>
+                </div>
             </div>
         </div>
     </div>
-}
-<hr />
-<h3 style="align-content:center">List of Flats</h3>
-@foreach(var flat in Building.FlatsOfBuilding)
-        {
-            <div class="col-md-3 mb-2">
-            <a href="/FlatDetails/@flat.Id">
-                <div class="card">
-                <img class="img-thumbnail" src="@flat.PictureURL" >
-                <div class="card-body">
-                    <h5 class="card-title mb-3">
-                        Name: @flat.Name
-                    </h5>
-                    <p class ="card-text">
-                        Surface: @flat.Surface
-                    </p>
-                    <p class ="card-text">
-                        Renting price: @flat.RentingPrice
-                    </p>
-                    @if(@flat.IsRented)
-                    {
-                        <p class ="card-text">Is Rented?: Yes</p>
-                    }
-                    else
-                    {
-                        <p class ="card-text">Is Rented?: No</p>
-                    }
+    <h5 style="text-align:center">List of Flats</h5>
+<hr style="margin-top: 7px; margin-bottom: 10px"/>
+<div class="row">
+    @foreach (var item in NewBuildingDto.FlatsOfBuilding)
+    {
+        <div class="col-md-4 col-xs-6 border-primary mb-3">
+            <div class="card mb-3" style="max-width: 300px;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <img class ="card-img-top" src="@item.PictureURL" style="height:150px" alt="@item.Name">
+                        <div class="card-header text-black" style="text-align:center">
+                            <p class="card-text">
+                                <h5 class="card-title">@item.Name</h5>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="card-body">
+                            <p class="card-text"><b>Id: </b>@item.Id</p>
+                            <p class="card-text"><b>Surface: </b>@item.Surface mp</p>
+                            <p class="card-text"><b>Flat Number: </b>@item.FlatNum</p>
+                            <p class="card-text ">
+                                <b>Status: </b>
+                                @if (@item.IsRented)
+                                {
+                                    <span class="badge bg-danger text-white" style="padding: 7px;">Rented</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-success text-white" style="padding: 7px;">Available</span>
+                                }
+                                </p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-footer " style="margin-top:5px">
+                            <div class="btn-group d-flex" role="group">
+                                <a href="@($"FlatDetails/{item.Id}")" class="btn btn-primary">Show Details</a>
+                               <a href="@($"EditFlat/{item.Id}")" class="btn btn-warning">Edit</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                </div>
-            </a>
             </div>
-        }
+        </div>
+    }
+    <div class="row">
+    <div class="col-md-12">
+        <a href="/EditFlat" class="btn btn-success" style="padding:5px">
+            Create Flat
+        </a>
+    </div>
+</div>
+</div>

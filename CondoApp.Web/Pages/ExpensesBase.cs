@@ -12,9 +12,12 @@ namespace CondoApp.Web.Pages
 
         public IEnumerable<ExpenseDto> Expenses { get; set; } = Enumerable.Empty<ExpenseDto>();
 
+        public double TotalCost { get; set; }
+
         protected override async Task OnInitializedAsync()
         {
             Expenses = await ExpenseService.GetExpenses();
+            TotalCost = await ExpenseService.TotalCost();
         }
     }
 }

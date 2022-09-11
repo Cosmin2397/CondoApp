@@ -3,40 +3,53 @@
 
 <PageTitle>Buildings
 </PageTitle>
-<h3>Buildings</h3>
-
-        @if(Buildings == null)
+<h3 style="text-align:center">List of Buildings</h3>
+@if(Buildings == null)
 {
     <div>No buildings</div>
 }
 else
 {
-@foreach(var building in Buildings)
-        {
-            <div class="col-md-3 mb-2">
-            <a href="/BuildingDetails/@building.Id">
-                <div class="card">
-                <img class="img-thumbnail" src="@building.PictureURL" >
-                <div class="card-body">
-                    <h5 class="card-title mb-3">
-                        @building.Name
-                    </h5>
-                    <p class ="card-text">
-                        City: @building.Country, @building.City
-                    </p>
-                    <p class ="card-text">
-                        Address: @building.Address
-                    </p>
+<div class="row">
+    @foreach (var item in Buildings)
+    {
+        <div class="col-md-4 col-xs-6 border-primary mb-3">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <img class ="card-img-top" src="@item.PictureURL" style="height:200px" alt="@item.Name">
+                        <div class="card-header text-black" style="text-align:center">
+                            <p class="card-text">
+                                <h5 class="card-title">@item.Name</h5>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="card-body">
+                            <p class="card-text"><b>Id: </b>@item.Id</p>
+                            <p class="card-text"><b>City: </b>@item.City, @item.Country</p>
+                            <p class="card-text"><b>Adress: </b>@item.Address</p>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-footer ">
+                            <div class="btn-group d-flex" role="group">
+                                <a href="@($"BuildingDetails/{item.Id}")" class="btn btn-primary">Show Details</a>
+                               <a href="@($"EditBuilding/{item.Id}")" class="btn btn-warning">Edit</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </a>
             </div>
-        }
+        </div>
+    }
+</div>
 }
-<div class="row">
+ <div class="row">
     <div class="col-md-12">
         <a href="/EditBuilding" class="btn btn-success">
-            Create Item
+            Create Building
         </a>
     </div>
 </div>

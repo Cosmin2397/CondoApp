@@ -16,5 +16,7 @@ namespace CondoApp.Web.Services.Contracts
         Task UpdateFlat(Flats flat);
 
         Task DeleteFlat(int id);
+
+        Task<double> TotalCostByFlat(int id);
     }
 }

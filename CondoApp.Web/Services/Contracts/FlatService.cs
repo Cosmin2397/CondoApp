@@ -147,5 +147,17 @@ namespace CondoApp.Web.Services.Contracts
                 Console.WriteLine(ex.Message);
             }
         }
+
+        public async Task<double> TotalCostByFlat(int id)
+        {
+            var total = 0;
+            var flatJson = await this.http.GetAsync($"api/Flats/Dto/{id}");
+            var flat = await flatJson.Content.ReadFromJsonAsync<FlatDto>();
+            foreach(var item in flat.Expenses)
+            {
+                total += item.Cost;
+            }
+            return total;
+        }
     }
 }
