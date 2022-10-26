@@ -1,0 +1,55 @@
+﻿<div class="card text-center h-100">
+    <div class="card-header">
+        Cluj-Napoca
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <p>
+                    <img src="@WeatherIconImgSrc" height="60" />
+                    @WeatherDescription
+                </p>
+            </div>
+             <div class="col-md-6">
+                  <p class="display-6">
+                    @Temperature °c
+                </p>
+            </div>
+        </div>
+
+        <div class="icons-list">
+            <p>
+                <i class="bi bi-chevron-double-right"></i>
+                Feels like @TemperatureFeelsLike °c
+            </p>
+            <p>
+                <i class="bi bi-chevron-double-right"></i>
+                @DateTime
+            </p>
+            <p>
+                <i class="bi bi-chevron-double-right"></i>
+                Max @TemperatureMax °c Min @TemperatureMin °c
+            </p>
+            <p>
+                <i class="bi bi-chevron-double-right"></i>
+                @Humidity % humidity
+            </p>
+            <p>
+                <i class="bi bi-chevron-double-right"></i>
+                Wind @WindSpeed meter/sec
+            </p>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public string? DateTime { get; set; }
+    [Parameter] public string WeatherIconImgSrc { get; set; }
+    [Parameter] public string WeatherDescription { get; set; }
+    [Parameter] public int Temperature { get; set; }
+    [Parameter] public double TemperatureFeelsLike { get; set; }
+    [Parameter] public double TemperatureMax { get; set; }
+    [Parameter] public double TemperatureMin { get; set; }
+    [Parameter] public int Humidity { get; set; }
+    [Parameter] public double WindSpeed { get; set; }
+}

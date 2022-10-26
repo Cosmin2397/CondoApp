@@ -1,8 +1,10 @@
 ﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+
 
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 h1:focus {
@@ -60,8 +62,97 @@ a, .btn-link {
     color: white;
 }
 
-    .blazor-error-boundary::after {
-        content: "An error has occurred."
-    }
+.blazor-error-boundary::after {
+    content: "An error has occurred."
+}
 
+.primary-card .card{
+    height:350px;
+}
 
+.primary-card .card {
+    margin: 25px 0;
+    border: none;
+    padding: 20px;
+    transition: box-shadow .3s ease-in-out;
+}
+
+.primary-card .card:hover {
+    box-shadow: 0 1px 2px rgb(0, 0, 0, 8%), 0px 4px 12px rgb(0, 0, 0, 8%);
+}
+
+.primary-card .card-header {
+    border: none;
+    background-color: transparent;
+    font-size: 28px!important;
+    padding: 0;
+}
+
+.primary-card .card-body {
+    padding: 5px;
+    text-align: left;
+}
+
+.primary-card p {
+    margin: 0;
+}
+
+.primary-card .icons-list {
+    text-align: left;
+    padding: 20px 0 0 35px;
+}
+
+.primary-card .icons-list p {
+    padding: 5px 10px;
+    border-radius: 10px;
+    transition: all .3s ease-in-out;
+}
+
+.primary-card .icons-list p:hover {
+    background-color: #2a60e4;
+    color: #fff;
+}
+
+.primary-card .icons-list i {
+    color: #2a60e4;
+    border-radius: 50%;
+    padding: 5px;
+    background-color: #557bd94d;
+    font-size: 12px;
+    transition: all .3s ease-in-out;
+}
+
+.primary-card .icons-list p:hover i {
+    color: #fff;
+}
+
+.primary-card .card-header {
+    background-color: #fff!important;
+    padding-top: 15px;
+}
+
+.primary-card .card-header .card-title {
+    font-weight: bold;
+}
+
+.primary-card .card-footer {
+    background-color: #fff;
+    border: none;
+    padding-bottom: 20px;
+}
+
+.primary-card .btn {
+    border-radius: 5px!important;
+}
+.primary-card .btn-primary {
+    background-color: #2a60e4;
+}
+
+.primary-card .btn-warning {
+    border: #2a60e4 2px solid;
+    background-color: transparent;
+}
+
+.editbtn {
+    padding-top:10px;
+}

@@ -1,9 +1,30 @@
 ﻿@page "/"
+@using CondoApp.Web.Services.OpenWeather
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Condo Management App</PageTitle>
+<div class="container page-wrapper">
+    @if (Weather is null)
+        {
+            <div class="d-flex justify-content-center">
+                <div class="spinner-border" role="status">
+                </div>
+            </div>
+        }
+    else{
+        <div class="row">
+            <WeatherDisplay Weather="Weather"></WeatherDisplay>
+            <DatasDisplay></DatasDisplay>
+        </div>
+        <Buildings></Buildings>
+    }
+</div>
+@code {
+    [Inject] IOpenWeatherService OpenWeatherService { get; set; }
 
-<h1>Hello, world!</h1>
+    WeatherDTO? Weather;
+    protected override async Task OnInitializedAsync()
+        {
+            Weather = await OpenWeatherService.GetWeather();
+        }
 
-Welcome to your new app.
-
-<SurveyPrompt Title="How is Blazor working for you?" />
+}

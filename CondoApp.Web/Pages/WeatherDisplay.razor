@@ -1,0 +1,19 @@
+﻿
+<div class="col-md-6 col-sm-12 col-xs-12">
+    <div class="primary-card h-350">
+        <WeatherCard WeatherDescription="@Weather.CurrentWeather.Weather.First().Main"
+        DateTime = "@DateTime.Now.ToShortDateString()"
+        WeatherIconImgSrc="@Weather.CurrentWeather.Weather.First().IconImgSrc"
+        Temperature="Convert.ToInt32(Weather.CurrentWeather.Main.Temp)"
+        TemperatureFeelsLike="Convert.ToInt32(Weather.CurrentWeather.Main.Feels_like)"
+        TemperatureMax="@Weather.CurrentWeather.Main.Temp_max"
+        TemperatureMin= "@Weather.CurrentWeather.Main.Temp_min"
+        Humidity="@Weather.CurrentWeather.Main.Humidity"
+        WindSpeed="@Weather.CurrentWeather.Wind.Speed" />
+    </div>
+</div>
+
+
+@code {
+    [Parameter] public WeatherDTO Weather { get; set; }
+}

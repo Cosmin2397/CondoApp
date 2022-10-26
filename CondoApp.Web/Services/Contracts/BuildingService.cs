@@ -147,5 +147,40 @@ namespace CondoApp.Web.Services.Contracts
                 Console.WriteLine(ex.Message);
             }
         }
+
+        public async Task<DatasDto> GetDatas()
+        {
+            try
+            {
+                var buildings = await _htpp.GetFromJsonAsync<List<Building>>("api/Buildings/");
+                var flats = await _htpp.GetFromJsonAsync<List<Flats>>("api/Flats/");
+                var expenses = await _htpp.GetFromJsonAsync<List<Expense>>("api/Expenses/");
+                var datas = new DatasDto();
+                foreach (var item in buildings)
+                {
+                    datas.NumOfBuildings++;
+                }
+                foreach(var item in flats)
+                {
+                    datas.NumOfFlats++;
+                    datas.NumsOfSquareMeters += item.Surface;
+                    if(item.IsRented)
+                    {
+                        datas.TotalRentings += item.RentingPrice;
+                    }
+                }
+                foreach(var item in expenses)
+                {
+                    datas.NumOfExpenses++;
+                    datas.TotalCosts += item.Cost;
+                }
+                return datas;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

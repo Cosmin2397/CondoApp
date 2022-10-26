@@ -16,5 +16,7 @@ namespace CondoApp.Web.Services.Contracts
         Task UpdateBuilding(Building building);
 
         Task DeleteBuilding(int id);
+
+        Task<DatasDto> GetDatas();
     }
 }

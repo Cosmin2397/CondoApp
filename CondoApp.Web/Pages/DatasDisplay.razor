@@ -1,0 +1,38 @@
+﻿@inherits DatasDisplayBase
+
+<div class="col-md-6 col-sm-12 col-xs-12">
+    <div class="primary-card">
+       <div class="card text-center h-350">
+        <div class="card-header">
+            Buildings Data
+        </div>
+        <div class="card-body icons-list">
+            <p>
+                <i class="bi bi-chevron-double-right"></i>
+                Number of Buildings: @Datas.NumOfBuildings
+            </p>
+            <p>
+                <i class="bi bi-chevron-double-right"></i>
+                Number of Flats: @Datas.NumOfFlats
+            </p>
+            <p>
+                <i class="bi bi-chevron-double-right"></i>
+                Monthly rentings: @Datas.TotalRentings.ToString("c");
+            </p>
+            <p>
+                <i class="bi bi-chevron-double-right"></i>
+                Total Square Meters: @Datas.NumsOfSquareMeters m2
+            </p>
+            <p>
+                <i class="bi bi-chevron-double-right"></i>
+                Number of Expenses: @Datas.NumOfExpenses
+            </p>
+            <p>
+                <i class="bi bi-chevron-double-right"></i>
+                Expenses total cost: @Datas.TotalCosts.ToString("c");
+            </p>
+        </div>
+    </div>
+    </div>
+</div>
+
