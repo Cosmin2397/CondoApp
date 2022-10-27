@@ -1,8 +1,9 @@
 ﻿using CondoApp.Api.Entities;
-using CondoApp.Models.Dtos;
+
 using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
+using CondoApp.Models.Dtos;
 
 namespace CondoApp.Web.Services.Contracts
 {

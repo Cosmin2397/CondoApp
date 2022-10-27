@@ -1,4 +1,6 @@
-﻿using CondoApp.Models.Dtos;
+﻿
+
+using CondoApp.Models.Dtos;
 
 namespace CondoApp.Web.Services.OpenWeather
 {

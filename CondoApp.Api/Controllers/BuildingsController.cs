@@ -1,9 +1,11 @@
-﻿using CondoApp.Models.Dtos;
+﻿
 using CondoApp.Api.Repositories.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using CondoApp.Api.Entities;
+
 using CondoApp.Api.Extensions;
+using CondoApp.Api.Entities;
+using CondoApp.Models.Dtos;
 
 namespace CondoApp.Api.Controllers
 {

@@ -1,4 +1,5 @@
 ﻿using CondoApp.Api.Entities;
+
 using CondoApp.Models.Dtos;
 
 namespace CondoApp.Web.Services.Contracts

@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CondoApp.Web", "CondoApp.We
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CondoApp.Api", "CondoApp.Api\CondoApp.Api.csproj", "{C54C60AC-A0B5-4C82-8C23-11BA0007505D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CondoApp.Models", "CondoApp.Models\CondoApp.Models.csproj", "{E19C185F-68A5-483E-86B4-A589E1D54BC7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{C54C60AC-A0B5-4C82-8C23-11BA0007505D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C54C60AC-A0B5-4C82-8C23-11BA0007505D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C54C60AC-A0B5-4C82-8C23-11BA0007505D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E19C185F-68A5-483E-86B4-A589E1D54BC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E19C185F-68A5-483E-86B4-A589E1D54BC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E19C185F-68A5-483E-86B4-A589E1D54BC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E19C185F-68A5-483E-86B4-A589E1D54BC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

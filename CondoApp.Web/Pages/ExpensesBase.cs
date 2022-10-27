@@ -1,7 +1,7 @@
 ﻿using CondoApp.Api.Entities;
-using CondoApp.Models.Dtos;
 using CondoApp.Web.Services.Contracts;
 using Microsoft.AspNetCore.Components;
+using CondoApp.Models.Dtos;
 
 namespace CondoApp.Web.Pages
 {

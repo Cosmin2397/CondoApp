@@ -1,4 +1,5 @@
-﻿using CondoApp.Api.Entities;
+﻿
+using CondoApp.Api.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace CondoApp.Api.Data
