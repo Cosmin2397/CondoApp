@@ -4,11 +4,6 @@
 
 <p id="description">Condo Management it's a project that presents an management site for condos which use ASP.Net Web API and Blazor WebAssembly. On this website you can use CRUD operations for Adding Getting Editing and Deleting buildings flats and expenses on a Microsoft SQL Server Database. This project consume and external Api(OpenWeather Api) which display local weather.</p>
 
-<h2>🚀 Demo</h2>
-
-[https://condoapp.azurewebsites.net/](https://condoapp.azurewebsites.net/)
-
-  
   
 <h2>🧐 Features</h2>
 
